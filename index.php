@@ -54,6 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-    echo "<h3>Resultado: $resultado</h3>";
+    echo "<div style='margin-top: 20px; font-size: 20px;'><strong>Resultado: $resultado</strong></div>";
 }
 ?>
