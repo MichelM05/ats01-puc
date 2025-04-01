@@ -1,2 +1,2 @@
-# Task API  
-Uma API simples usando Flask para gerenciar tarefas.  
+# READ ME
+Um pequeno projeto com a ideia de aperfeiçoar a programação em PHP.
