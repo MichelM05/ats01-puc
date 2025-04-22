@@ -22,3 +22,16 @@ jobs:
 
       - name: Verificar se o código PHP tem erros
         run: php -l index.php
+
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar mensagem para o Discord
+        uses: Ilshidur/action-discord@master
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: |
+            🚀 Novo push em **${{ github.repository }}**
+            🔧 Autor: ${{ github.actor }}
+            📝 Mensagem: ${{ github.event.head_commit.message }}
+            🔗 [Ver no GitHub](${{ github.event.head_commit.url }})
