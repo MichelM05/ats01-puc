@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Enviar mensagem personalizada ao Discord
-        uses: Ilshidur/action-discord@v1.0.0
+        uses: Ilshidur/action-discord@master
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message: |
