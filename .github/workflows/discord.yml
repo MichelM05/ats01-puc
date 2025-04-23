@@ -4,19 +4,17 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, closed]
 
 jobs:
   discord:
     runs-on: ubuntu-latest
     steps:
-      - name: Enviar mensagem para o Discord
-        uses: Ilshidur/action-discord@master
+      - name: Enviar mensagem personalizada ao Discord
+        uses: Ilshidur/action-discord@v1.0.0
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message: |
             🚀 Novo push em **${{ github.repository }}**
-            🔧 Autor: ${{ github.actor }}
-            📝 Mensagem: ${{ github.event.head_commit.message }}
+            👤 Autor: ${{ github.actor }}
+            📝 Commit: ${{ github.event.head_commit.message }}
             🔗 [Ver no GitHub](${{ github.event.head_commit.url }})
