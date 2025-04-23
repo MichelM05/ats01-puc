@@ -3,8 +3,8 @@ name: Notificar Discord
 on:
   push:
     branches:
-      - main
-
+      - '**' 
+      
 jobs:
   discord:
     runs-on: ubuntu-latest
