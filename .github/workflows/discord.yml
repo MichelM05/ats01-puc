@@ -15,6 +15,6 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message: |
             🚀 Novo push em **${{ github.repository }}**
-            👤 Autor: ${{ github.actor }}
+            👤 Usuario: ${{ github.actor }}
             📝 Commit: ${{ github.event.head_commit.message }}
             🔗 [Ver no GitHub](${{ github.event.head_commit.url }})
