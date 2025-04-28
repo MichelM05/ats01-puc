@@ -1,5 +1,7 @@
 name: PHP CI Workflow
 
+name: PHP Testes Unitários
+
 on:
   push:
     branches:
@@ -10,23 +12,23 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Ambiente de execução no GitHub Actions, você pode ajustar conforme necessidade
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Faz o checkout do seu repositório para o ambiente de CI
+      uses: actions/checkout@v2
 
     - name: Set up PHP
-      uses: shivammathur/setup-php@v2  # Instala o PHP no ambiente de CI
+      uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1'  # Atualizando para PHP 8.1 (ou superior)
+        php-version: '8.0'  # Versão 8.0 para bater com o composer.json
+        coverage: none  # Se você não precisar de cobertura de código
 
     - name: Install dependencies
-      run: |
-        composer install --no-interaction  # Instala todas as dependências do projeto
+      run: composer install --no-interaction
 
     - name: Ensure phpunit is executable
-      run: chmod +x ./vendor/bin/phpunit  # Dá permissão de execução ao arquivo phpunit
+      run: chmod +x ./vendor/bin/phpunit
 
     - name: Run tests
-      run: ./vendor/bin/phpunit tests  # Executa os testes com o PHPUnit na pasta 'tests'
+      run: ./vendor/bin/phpunit tests
