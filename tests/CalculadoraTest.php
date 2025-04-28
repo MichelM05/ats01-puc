@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once 'calculadora.php';
+
+require_once __DIR__ . '/../calculadora.php';
 
 class CalculadoraTest extends TestCase
 {
