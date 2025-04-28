@@ -1,5 +1,4 @@
 <?php
-// calculadora.php
 
 class Calculadora
 {
