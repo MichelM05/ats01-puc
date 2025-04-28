@@ -1,0 +1,10 @@
+{
+    "name": "meu/ats01-puc", 
+    "description": "A simple PHP project",
+    "require": {
+      "php": ">=8.0.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^9.5"
+    }
+}
