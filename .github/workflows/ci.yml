@@ -3,26 +3,30 @@ name: PHP Testes Unitários
 on:
   push:
     branches:
-      - develop
+      - main  # Ou a branch que você usa para deploy
   pull_request:
     branches:
-      - main
+      - main  # Ou a branch que você usa para deploy
 
 jobs:
-  php-tests:
+  test:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Clonar o repositório
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Instalar PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'  # Versão 8.0 para bater com o composer.json
+        coverage: none  # Se você não precisar de cobertura de código
 
-      - name: Instalar PHPUnit
-        run: composer require --dev phpunit/phpunit ^10
+    - name: Install dependencies
+      run: composer install --no-interaction
 
-      - name: Rodar os testes
-        run: ./vendor/bin/phpunit tests
+    - name: Ensure phpunit is executable
+      run: chmod +x ./vendor/bin/phpunit
+
+    - name: Run tests
+      run: ./vendor/bin/phpunit tests
