@@ -1,4 +1,4 @@
-name: CI - Verificar Código PHP
+name: PHP Testes Unitários
 
 on:
   push:
@@ -9,16 +9,20 @@ on:
       - main
 
 jobs:
-  test:
+  php-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clonar código do repositório
+      - name: Clonar o repositório
         uses: actions/checkout@v3
 
-      - name: Configurar PHP
+      - name: Instalar PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
 
-      - name: Verificar se o código PHP tem erros
-        run: php -l index.php
+      - name: Instalar PHPUnit
+        run: composer require --dev phpunit/phpunit ^10
+
+      - name: Rodar os testes
+        run: ./vendor/bin/phpunit tests
