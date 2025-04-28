@@ -9,20 +9,24 @@ on:
       - main
 
 jobs:
-  php-tests:
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: ubuntu-latest  # Ambiente de execução no GitHub Actions, você pode ajustar conforme necessidade
+    
     steps:
-      - name: Clonar o repositório
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2  # Faz o checkout do seu repositório para o ambiente de CI
 
-      - name: Instalar PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2  # Instala o PHP no ambiente de CI
+      with:
+        php-version: '8.0'  # Ou qualquer versão PHP que você esteja utilizando
 
-      - name: Instalar PHPUnit
-        run: composer require --dev phpunit/phpunit ^10
+    - name: Install dependencies
+      run: |
+        composer install --no-interaction  # Instala todas as dependências do projeto
 
-      - name: Rodar os testes
-        run: ./vendor/bin/phpunit tests
+    - name: Ensure phpunit is executable
+      run: chmod +x ./vendor/bin/phpunit  # Dá permissão de execução ao arquivo phpunit
+
+    - name: Run tests
+      run: ./vendor/bin/phpunit tests  # Executa os testes com o PHPUnit na pasta 'tests'
