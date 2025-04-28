@@ -1,5 +1,3 @@
-name: PHP CI Workflow
-
 name: PHP Testes Unitários
 
 on:
