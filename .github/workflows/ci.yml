@@ -1,3 +1,13 @@
+name: PHP CI Workflow
+
+on:
+  push:
+    branches:
+      - main  # Ou a branch que você usa para deploy
+  pull_request:
+    branches:
+      - main  # Ou a branch que você usa para deploy
+
 jobs:
   test:
     runs-on: ubuntu-latest  # Ambiente de execução no GitHub Actions, você pode ajustar conforme necessidade
